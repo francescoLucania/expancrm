@@ -9,4 +9,4 @@ module.exports.register = (req, res) => {
     res.status(200).json({
         register: 'from controller'
     })
-}
+};
