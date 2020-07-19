@@ -1,5 +1,5 @@
 module.exports.getAll = (req, res) => {
-
+    res.json({massage: 'Categories'})
 };
 
 module.exports.getById = (req, res) => {

@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const passport = require('passport')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -18,9 +19,12 @@ mongoose.connect(keys.mongoURI, {
     useCreateIndex: true
 })
     .then(() => {
-        console.log('MONGO DB connected')
+        console.log('MONGO DB connected');
     })
     .catch(error => console.log(error));
+
+app.use(passport.initialize());
+require('./middleware/passport')(passport);
 
 app.use(morgan('dev'));
 
