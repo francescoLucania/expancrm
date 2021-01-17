@@ -27,22 +27,16 @@ app.use(passport.initialize());
 require('./middleware/passport')(passport);
 
 app.use(morgan('dev'));
-
+app.use('/uploads', express.static('uploads'));
 app.use(cors('cors'));
-
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(bodyParser.json());
 
 // routes
 app.use('/api/auth', authRoutes);
-
 app.use('/api/analytics', analyticsRoutes);
-
 app.use('/api/category', categoryRoutes);
-
 app.use('/api/order', orderRoutes);
-
 app.use('/api/position', positionRoutes);
 
 module.exports = app;
