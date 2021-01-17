@@ -1,6 +1,6 @@
 const Category = require('../models/Category');
 const Position = require('../models/Position');
-const errorhandler = require('../utils/errorHandler');
+const errorHandler = require('../utils/errorHandler');
 
 
 module.exports.getAll = async (req, res) => {
@@ -8,7 +8,7 @@ module.exports.getAll = async (req, res) => {
         const categories = await Category.find({user: req.user.id})
         res.status(200).json(categories)
     } catch (e) {
-        errorhandler(res, e)
+        errorHandler(res, e)
     }
 };
 
@@ -17,7 +17,7 @@ module.exports.getById = async (req, res) => {
         const category = await Category.findById(req.params.id)
         res.status(200).json(category)
     } catch (e) {
-        errorhandler(res, e)
+        errorHandler(res, e)
     }
 };
 
@@ -29,7 +29,7 @@ module.exports.remove = async (req, res) => {
             message: 'Категория удалена'
         })
     } catch (e) {
-        errorhandler(res, e)
+        errorHandler(res, e)
     }
 };
 
@@ -43,7 +43,7 @@ module.exports.create = async (req, res) => {
         await category.save()
         res.status(201).json(category)
     } catch (e) {
-        errorhandler(res, e)
+        errorHandler(res, e)
     }
 };
 
@@ -64,6 +64,6 @@ module.exports.update = async (req, res) => {
         )
         res.status(200).json(category)
     } catch (e) {
-        errorhandler(res, e)
+        errorHandler(res, e)
     }
 };
